@@ -8,11 +8,14 @@
  */
 module.exports = [
     '$scope',
-    'ExampleService',
+    'ExampleService','$ionicSlideBoxDelegate',
 
-    function( $scope, ExampleService )
+    function( $scope, ExampleService,$ionicSlideBoxDelegate )
     {
-      $scope.myHTML = null;
+      // Called each time the slide changes
+      $scope.slideChanged = function(index) {
+        $scope.slideIndex = index;
+      };
 
       // just an example...
       $scope.fetchRandomText = function() {

@@ -71,13 +71,24 @@ angular.module( 'IonicGulp', [
           }
         }
       })
-      .state('app.eat',{
+      .state('app.food',{
         url: '/foods',
         cache: true,
         views: {
           'viewContent': {
-            templateUrl: 'templates/views/eat.html',
-            controller: 'EatController'
+            templateUrl: 'templates/views/food/food.html',
+            controller: 'FoodController'
+          }
+        }
+      })
+
+      .state('app.drink',{
+        url: '/drinks',
+        cache: true,
+        views: {
+          'viewContent': {
+            templateUrl: 'templates/views/drink/drink.html',
+            controller: 'DrinkController'
           }
         }
       });
@@ -93,7 +104,8 @@ angular.module( 'IonicGulp', [
 .controller( 'MainController',     require( './controllers/mainController'     ) )
 .controller( 'HomeController',     require( './controllers/homeController'     ) )
 .controller( 'SettingsController', require( './controllers/settingsController' ) )
-.controller( 'EatController',      require( './controllers/eatController'      ) )
+.controller( 'FoodController',      require( './controllers/foodController'      ) )
+.controller( 'DrinkController',      require( './controllers/drinkController'    ) )
 
 // Angular module services
 //

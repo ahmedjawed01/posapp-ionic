@@ -5,3 +5,19 @@
 .content {
   padding: 1rem;
 }
+
+.box1, .box2, .box3 {
+   height: 600px;
+   background: url('../images/logo.jpg') no-repeat center;
+}
+
+.box h1{
+	text-align:center;
+}
+
+.font-icon{
+	display: block;
+    margin-left: auto;
+    margin-right: auto 
+}
+

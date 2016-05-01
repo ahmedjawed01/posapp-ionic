@@ -1,19 +1,33 @@
 <ion-view>
-    <ion-header-bar align-title="center" class="bar-positive">
+    <ion-header-bar align-title="center" class="bar-orange">
     <button class="button button-icon icon ion-navicon" menu-toggle="left"></button>
-        <h1 class="title">ionic gulp</h1>
+        <img src="../images/logo-font.png" class="font-icon"/>
     </ion-header-bar>
 
     <ion-content>
-        <ion-refresher
-            pulling-text="Pull to refresh..."
-            on-refresh="fetchRandomText()">
-        </ion-refresher>
-        <div class="loader" ng-if="!myHTML">
-            <ion-spinner></ion-spinner>
-        </div>
-        <div class="content" ng-bind-html="myHTML">
-        </div>
-    </ion-content>
+
+    <ion-slide-box>
+
+    <ion-slide>
+      <div class = "box box1">
+      </div>
+    </ion-slide>
+
+    <ion-slide>
+      <div class = "box box2">
+       
+      </div>
+    </ion-slide>
+
+    <ion-slide>
+      <div class = "box box3">
+       
+      </div>
+    </ion-slide>
+
+    </ion-slide-box>
+
+
+</ion-content>
 
 </ion-view>

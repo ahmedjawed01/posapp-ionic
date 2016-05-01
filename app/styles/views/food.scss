@@ -1,0 +1,33 @@
+
+@media screen and (max-width: 1023px){
+		.responsive-lg .col, .responsive-lg .col-10, .responsive-lg .col-20, .responsive-lg .col-25, .responsive-lg .col-33, .responsive-lg .col-34, .responsive-lg .col-50, .responsive-lg .col-66, .responsive-lg .col-67, .responsive-lg .col-75, .responsive-lg .col-80, .responsive-lg .col-90 {
+
+			margin-bottom:0px!important;
+		}
+
+}
+
+
+.item-cover{
+	width: auto;
+    height: 350px;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center center;
+    zoom:0.9;
+}
+
+.item-overlay{
+	
+	p{
+		color:#FFFFFF;
+		overflow:visible!important;
+		font-size:44px;
+	}
+	display: flex;
+    justify-content: center;
+    align-items: center;
+	height:100%;
+	width:100%;
+    background: rgba(0, 0, 0, .6);
+}
