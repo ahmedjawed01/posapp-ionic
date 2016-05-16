@@ -5,8 +5,8 @@
 }
 
 .bar.bar-orange {
-    border-color: #FF9800;
-    background-color: #FF9800;
+    border-color: #424242;
+    background-color: #424242;
     background-image: linear-gradient(0deg, #6b46e5, #6b46e5 50%, transparent 50%);
     color: #ffffff; }
     .bar.bar-orange .title {
@@ -22,6 +22,7 @@
       color:#FFFFFF;
       }
 
-.item{
-  border-style:dotted!important;
+.list > .item{
+  border-style:none!important;
+  padding:26px 26px 26px 54px!important;
 }

@@ -37,9 +37,11 @@ angular.module( 'IonicGulp', [
   '$httpProvider',
   '$stateProvider',
   '$urlRouterProvider',
+  '$ionicConfigProvider',
 
-  function( $httpProvider, $stateProvider, $urlRouterProvider )
+  function( $httpProvider, $stateProvider, $urlRouterProvider)
   {
+    // $ionicConfigProvider.backButton.text('');
     // register $http interceptors, if any. e.g.
     // $httpProvider.interceptors.push('interceptor-name');
 
@@ -60,6 +62,7 @@ angular.module( 'IonicGulp', [
             controller: 'HomeController'
           }
         }
+        
       })
       .state('app.settings', {
         url: '/settings',
@@ -71,6 +74,8 @@ angular.module( 'IonicGulp', [
           }
         }
       })
+
+      //---- FOOD ----
       .state('app.food',{
         url: '/foods',
         cache: true,
@@ -81,7 +86,18 @@ angular.module( 'IonicGulp', [
           }
         }
       })
+      .state('app.foodlist',{
+        url: '/foods/list',
+        cache: true,
+        views: {
+          'viewContent': {
+            templateUrl: 'templates/views/food/food-list.html',
+            controller: 'FoodController'
+          }
+        }
+      })
 
+      //---- DRINK ----
       .state('app.drink',{
         url: '/drinks',
         cache: true,

@@ -1,20 +1,30 @@
 <ion-view>
-   <ion-header-bar align-title="center" class="bar-orange">
-    <button class="button button-icon icon ion-navicon" menu-toggle="left"></button>
-        <img src="../images/logo-font.png" class="font-icon"/>
-    </ion-header-bar>
-
-    <ion-content>
-      <div class="row responsive-lg" style="margin-bottom:0px">
-        <div class="card" style="margin:5px 0px" ng-repeat="food in foods">
-          <div class="item item-image">
-            <div class="item-cover" ng-style="{'background-image':'url(../images/{{food.imageName}})'}">
-              <div class="item-overlay">
-                <p>{{food.menuName}}</p>
-              </div>
+  
+  <ion-nav-bar class="bar-orange">
+    <ion-nav-buttons side="left">
+      <button class="button button-icon icon ion-navicon" menu-toggle="left"></button>
+    </ion-nav-buttons>
+      <!-- <ion-nav-back-button class="button-clear" ng-click="goBack()">
+        <i class="ion-arrow-left-c"></i> Back
+      </ion-nav-back-button> -->
+    <ion-nav-title>
+      <img src="../images/logo-font.png" class="font-icon" style="margin-top:10px"/>
+    </ion-nav-title>
+  </ion-nav-bar>
+  <ion-content>
+    <div class="row responsive-lg" style="margin-bottom:0px">
+      <div class="card" style="margin:5px 0px" ng-repeat="food in foods">
+        <div class="item item-image">
+          <div class="item-cover" ng-style="{'background-image':'url(../images/{{food.imageName}})'}">
+            <div class="item-overlay">
+              <button class="button button-clear button-positive" ng-click="goFoodlist()">
+                {{food.menuName}}
+              </button>
             </div>
           </div>
         </div>
-        
-    </ion-content>
+      </div>
+    </div>
+  </ion-content>
 </ion-view>
+

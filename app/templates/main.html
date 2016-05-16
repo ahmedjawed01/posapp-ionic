@@ -1,10 +1,9 @@
 <ion-side-menus>
     <!-- Center content -->
     <ion-side-menu-content>
-
-        <ion-nav-view name="viewContent">
-
-        </ion-nav-view>
+        
+        <ion-nav-view name="viewContent"></ion-nav-view>
+    
     </ion-side-menu-content>
 
     <!-- Left menu -->
@@ -14,22 +13,22 @@
             <h1 class="title">Navigation</h1>
         </ion-header-bar>
 
-        <ion-content class="has-header" style="color:#FF9800">
+        <ion-content class="has-header">
             <div class="list">
                 <a menu-close class="item item-icon-left" ui-sref-active="active" ui-sref="app.home">
-                    <i class="icon ion-home"></i>
+                    <i class="icon ion-ios-home-outline" style="color:#FFC107"></i>
                     Home
                 </a>
                 <a menu-close class="item item-icon-left" ui-sref-active="active" ui-sref="app.settings">
-                    <i class="icon ion-settings"></i>
+                   <i class="icon ion-ios-settings" style="color:#FFC107"></i>
                     Settings
                 </a>
-                <a menu-close class="item item-icon-left" ui-sref-active="active" ui-sref="app.food">
-                    <i class="icon ion-fork"></i><i class="icon ion-spoon" style="margin-left:15px"></i>
+                <a menu-close class="item item-icon-left" ui-sref-active="active" ui-sref="app.food" >
+                    <i class="icon ion-fork" style="color:#FFC107"></i><i class="icon ion-spoon" style="color:#FFC107;margin-left:15px"></i>
                     Eat
                 </a>
                 <a menu-close class="item item-icon-left" ui-sref-active="active" ui-sref="app.drink">
-                    <i class="icon ion-beer"></i>
+                    <i class="icon ion-ios-wineglass-outline" style="color:#FFC107"></i>
                     Drink
                 </a>
             </div>
