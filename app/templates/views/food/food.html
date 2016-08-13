@@ -1,4 +1,4 @@
-<ion-view>
+<ion-view ng-init="getParentMenu()">
   
   <ion-nav-bar class="bar-orange">
     <ion-nav-buttons side="left">
@@ -13,12 +13,12 @@
   </ion-nav-bar>
   <ion-content>
     <div class="row responsive-lg" style="margin-bottom:0px">
-      <div class="card" style="margin:5px 0px" ng-repeat="food in foods">
+      <div class="card" style="margin:5px 0px" ng-repeat="menu in parentMenu">
         <div class="item item-image">
-          <div class="item-cover" ng-style="{'background-image':'url(../images/{{food.imageName}})'}">
+          <div class="item-cover" ng-style="{'background-image':'url(../images/{{menu.image_name}})'}">
             <div class="item-overlay">
-              <button class="button button-clear button-positive" ng-click="goFoodlist()">
-                {{food.menuName}}
+              <button class="button button-clear button-positive" ui-sref="app.foodlist({parentId: menu.id})">
+                {{menu.menu_name}}
               </button>
             </div>
           </div>

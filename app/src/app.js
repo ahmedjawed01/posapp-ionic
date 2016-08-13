@@ -87,13 +87,16 @@ angular.module( 'IonicGulp', [
         }
       })
       .state('app.foodlist',{
-        url: '/foods/list',
+        url: '/foods/',
         cache: true,
         views: {
           'viewContent': {
             templateUrl: 'templates/views/food/food-list.html',
-            controller: 'FoodController'
+            controller: 'FoodListController'
           }
+        },
+        params: {
+          parentId: null
         }
       })
 
@@ -120,11 +123,13 @@ angular.module( 'IonicGulp', [
 .controller( 'MainController',     require( './controllers/mainController'     ) )
 .controller( 'HomeController',     require( './controllers/homeController'     ) )
 .controller( 'SettingsController', require( './controllers/settingsController' ) )
-.controller( 'FoodController',      require( './controllers/foodController'      ) )
+.controller( 'FoodController',      require( './controllers/food/foodController'      ) )
+.controller( 'FoodListController',      require( './controllers/food/foodListController'      ) )
 .controller( 'DrinkController',      require( './controllers/drinkController'    ) )
 
 // Angular module services
 //
 .factory( 'ExampleService',        require( './services/ExampleService' ) )
 .factory( 'ApiService',            require( './services/ApiService'     ) )
+.factory( 'FoodService',  require('./services/FoodService'))
 ;

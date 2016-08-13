@@ -1,5 +1,5 @@
 
-<ion-view>
+<ion-view ng-init="getMenu()">
   
     <ion-nav-bar class="bar-orange">
       <ion-nav-back-button class="button-clear" ng-click="goBack()">
@@ -9,17 +9,28 @@
           <img src="../images/logo-font.png" class="font-icon" style="margin-top:10px"/>
       </ion-nav-title>
     </ion-nav-bar>
+
     <ion-content>
-    <div class="row responsive-lg" style="margin-bottom:0px">
-      <div class="card" style="margin:5px 0px">
-        <div class="item item-divider">
-          I'm a Header in a Card!
-        </div>
-        <div class="item item-text-wrap">
-          This is a basic Card with some text.
-        </div>
-        <div class="item item-divider">
-          I'm a Footer in a Card!
+    
+    <div class="row responsive-lg">
+      <div class="col" ng-repeat="menu in menus" style="background-color:#D7DBE4">
+        <div class="row">
+          <div class="col col-25" style="max-width:40%">
+            <img src="http://placehold.it/250x150">
+          </div>
+          <div class="col">
+            <h4>{{menu.menuName}}</h4>
+            <p>{{menu.description}}</p>
+            <hr>
+            <div class="row">
+              <div class="col col-50">
+                <span style="float:left">{{menu.price | currency:''}}</span>
+              </div>
+              <div class="col col-50" style="alignt-content:end">
+                <button style="al" class="button button-balanced">Order</button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
