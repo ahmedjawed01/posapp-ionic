@@ -7,10 +7,18 @@
  * # MainController
  */
 module.exports = [
-    '$scope',
+    '$scope','StorageService',
 
-    function( $scope )
+    function( $scope,StorageService)
     {
-        // do something with $scope
+        $scope.orderCount = null;
+
+        $scope.getOrderCount = function(){
+            console.log('order='+StorageService.get('myorder'));
+        	if(StorageService.get('myorder') == null){
+        		return 0;
+        	}
+        	return StorageService.get('myorder').length;
+        }
     }
 ];

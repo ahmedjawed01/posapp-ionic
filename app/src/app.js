@@ -17,21 +17,44 @@
 angular.module( 'IonicGulp', [
   'ionic',
   'ngCordova',
-  'ngResource'
+  'ngResource',
+  'ngCookies',
+  'ngStorage'
 ] )
 .run( [
-  '$ionicPlatform',
+  '$ionicPlatform','$rootScope', '$ionicLoading',
 
-  function( $ionicPlatform )
+  function( $ionicPlatform ,$rootScope, $ionicLoading)
   {
+
+
 
   $ionicPlatform.ready(function() {
     // save to use plugins here
+    // regular stuff here
+    StatusBar.backgroundColorByHexString("#FFA726");
+
   });
 
   // add possible global event handlers here
 
 } ] )
+
+.directive('backImg', function(){
+  return function(scope, element, attrs){
+    var url = attrs.backImg;
+    var content = element.find('div');
+    content.css({
+      'background': 'url(' + url +') no-repeat',
+      'background-size' : 'cover',
+      'position' : 'relative',
+      'min-height': '100%'
+    });
+  };
+})
+
+.constant('BASE_URL','http://192.168.23.1:8080')
+// .constant('BASE_URL','http://localhost:8080')
 
 .config( [
   '$httpProvider',
@@ -39,8 +62,9 @@ angular.module( 'IonicGulp', [
   '$urlRouterProvider',
   '$ionicConfigProvider',
 
-  function( $httpProvider, $stateProvider, $urlRouterProvider)
+  function( $httpProvider, $stateProvider, $urlRouterProvider,$ionicConfigProvider)
   {
+    $ionicConfigProvider.navBar.alignTitle('center')
     // $ionicConfigProvider.backButton.text('');
     // register $http interceptors, if any. e.g.
     // $httpProvider.interceptors.push('interceptor-name');
@@ -79,13 +103,22 @@ angular.module( 'IonicGulp', [
       .state('app.food',{
         url: '/foods',
         cache: true,
+        parent: 'app',
         views: {
           'viewContent': {
             templateUrl: 'templates/views/food/food.html',
             controller: 'FoodController'
           }
+        },
+        test: function($q,  $timeout) {
+          var defer = $q.defer(); 
+          $timeout(function(){
+            defer.reject();
+          },50);
+          return defer.promise; 
         }
       })
+
       .state('app.foodlist',{
         url: '/foods/',
         cache: true,
@@ -100,6 +133,21 @@ angular.module( 'IonicGulp', [
         }
       })
 
+      .state('app.fooddetail',{
+        url: '/foods/detail',
+        cache: true,
+        parent: 'app',
+        views: {
+          'viewContent': {
+            templateUrl: 'templates/views/food/food-detail.html',
+            controller: 'FoodDetailController'
+          }
+        },
+        params: {
+          menu: null
+        }
+      })
+
       //---- DRINK ----
       .state('app.drink',{
         url: '/drinks',
@@ -107,7 +155,26 @@ angular.module( 'IonicGulp', [
         views: {
           'viewContent': {
             templateUrl: 'templates/views/drink/drink.html',
-            controller: 'DrinkController'
+            controller: 'DrinkController as vm'
+          }
+        },
+        test: function($q,  $timeout) {
+          var defer = $q.defer(); 
+          $timeout(function(){
+            defer.reject();
+          },50);
+          return defer.promise; 
+        }
+      })
+
+      //---- DRINK ----
+      .state('app.myorder',{
+        url: '/myorder',
+        cache: true,
+        views: {
+          'viewContent': {
+            templateUrl: 'templates/views/myorder/myorder.html',
+            controller: 'MyOrderController'
           }
         }
       });
@@ -125,11 +192,14 @@ angular.module( 'IonicGulp', [
 .controller( 'SettingsController', require( './controllers/settingsController' ) )
 .controller( 'FoodController',      require( './controllers/food/foodController'      ) )
 .controller( 'FoodListController',      require( './controllers/food/foodListController'      ) )
-.controller( 'DrinkController',      require( './controllers/drinkController'    ) )
+.controller( 'FoodDetailController', require( './controllers/food/foodDetailController' ))
+.controller( 'DrinkController',      require( './controllers/drink/drinkController'    ) )
+.controller( 'MyOrderController',      require( './controllers/myorder/myOrderController'    ) )
 
 // Angular module services
 //
 .factory( 'ExampleService',        require( './services/ExampleService' ) )
 .factory( 'ApiService',            require( './services/ApiService'     ) )
 .factory( 'FoodService',  require('./services/FoodService'))
+.factory( 'StorageService',  require('./services/StorageService'))
 ;

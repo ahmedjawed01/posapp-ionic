@@ -2,12 +2,16 @@
   "name": "IonicGulp",
   "author": "curiouslabs <hadihadihadi91@gmail.com>",
   "private": "true",
-  "devDependencies": {},
+  "devDependencies": {
+    "platform.js": "platform#^1.3.1"
+  },
   "dependencies": {
     "angular": "~1.4.8",
     "ngCordova": "~0.1.23-alpha",
     "angular-resource": "~1.4.8",
-    "ionic": "~1.2.1"
+    "ionic": "~1.2.1",
+    "angular-cookies": "^1.5.8",
+    "ngstorage": "^0.3.11"
   },
   "resolutions": {
     "angular": "1.4.3"

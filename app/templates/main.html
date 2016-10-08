@@ -13,27 +13,28 @@
             <h1 class="title">Navigation</h1>
         </ion-header-bar>
 
-        <ion-content class="has-header">
-            <div class="list">
-                <a menu-close class="item item-icon-left" ui-sref-active="active" ui-sref="app.home">
-                    <i class="icon ion-ios-home-outline" style="color:#FFC107"></i>
-                    Home
+        <ion-content class="has-header" style="background-color: #FFA726;">
+            <div class="list" id="listNav" style="color:#fff">
+                <a menu-close class="item item-icon-left" style="background-color: transparent!important;padding-top:30px;padding-bottom:30px" ui-sref-active="active" ui-sref="app.home">
+                    <i class="icon ion-ios-home-outline" style="color:#fff"></i>
+                    HOME
                 </a>
                <!--  <a menu-close class="item item-icon-left" ui-sref-active="active" ui-sref="app.settings">
                    <i class="icon ion-ios-settings" style="color:#FFC107"></i>
                     Settings
                 </a> -->
-                <a menu-close class="item item-icon-left" ui-sref-active="active" ui-sref="app.food" >
-                    <i class="icon ion-fork" style="color:#FFC107"></i><i class="icon ion-spoon" style="color:#FFC107;margin-left:15px"></i>
-                    Eat
+                <a menu-close class="item item-icon-left" style="background-color: transparent!important;padding-top:30px;padding-bottom:30px" ui-sref-active="active" ui-sref="app.food" >
+                    <!-- <i class="icon ion-fork" style="color:#fff;margin-left:-5px"></i><i class="icon ion-spoon" style="color:#fff;margin-left:10px"></i> -->
+                    <i class="icon ion-android-restaurant" style="color:#fff"></i>
+                    FOODS
                 </a>
-                <a menu-close class="item item-icon-left" ui-sref-active="active" ui-sref="app.drink">
-                    <i class="icon ion-ios-wineglass-outline" style="color:#FFC107"></i>
-                    Drink
+                <a menu-close class="item item-icon-left" style="background-color: transparent!important;padding-top:30px;padding-bottom:30px" ui-sref-active="active" ui-sref="app.drink">
+                    <i class="icon ion-beer" style="color:#fff"></i>
+                    DRINKS
                 </a>
-                <a menu-close class="item item-icon-left" ui-sref-active="active" ui-sref="app.drink">
-                    <i class="icon ion-ios-list-outline" style="color:#FFC107"></i>
-                    My Order
+                <a menu-close class="item item-icon-left" style="background-color: transparent!important;padding-top:30px;padding-bottom:30px" ui-sref-active="active" ui-sref="app.myorder">
+                    <i class="icon ion-ios-list-outline" style="color:#fff"></i>
+                    MY ORDER <span class="badge badge-assertive">{{getOrderCount()}}</span>
                 </a>
             </div>
         </ion-content>

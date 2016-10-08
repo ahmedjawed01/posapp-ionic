@@ -6,62 +6,27 @@
  * @description
  * # HomeController
  */
-module.exports = [
-    '$scope','$state','$ionicHistory','FoodService','$stateParams',
+ module.exports = [
+ '$scope','$state','FoodService','$stateParams',
 
-    function($scope,$state,$ionicHistory,FoodService,$stateParams){
-      console.log('STATE PARAM='+$stateParams.parentId);
-    	
-        $scope.parentId = 0;
-    	
-    	// $scope.foods = [{"menuName":"Kambing","imageName":"kambing.jpeg"},{"menuName":"Sate","imageName":"satay.jpeg"},
-    	// {"menuName":"Nasi & Mie Goreng","imageName":"nasi-goreng.jpg"},{"menuName":"Rice Included","imageName":"rice.jpeg"}];
-      // $scope.goFoodlist = function(parentId){
-      //       FoodService.doSomethingAsync()
-      //       .then(FoodService.getByParent(parentId))
-      //       .then(function(response) {
-      //         console.log('response end='+response);
-      //         $scope.childMenu = response;
-              
-      //       });
-      //     }
-        
-        $scope.childMenu = [];
+ function($scope,$state,FoodService,$stateParams,getData){
 
-        if($stateParams.parentId != undefined){
-          $scope.childMenu = [];
-
-        }else if($stateParams.parentId == undefined){
-          $scope.parentMenu = [];
-
-          $scope.getParentMenu = function() {
-            FoodService.doSomethingAsync()
-            .then(FoodService.getParentMenu)
-            .then(function(response) {
-              console.log(response);
-              $scope.parentMenu = response.data[0];
-            });
-          };
-        }
+  $scope.parentId = 0;
 
 
-    	
+  $scope.childMenu = [];
 
-    	$scope.goBack = function() {
-	    	$ionicHistory.goBack();
-	  	};
+  $scope.parentMenu = [];
 
-      
+  $scope.getParentMenu = function() {
+    FoodService.doSomethingAsync().then(FoodService.getParentMenu).then(function successCallback(response) {
+      console.log(response);
+      $scope.parentMenu = response.data;
+    }, 
+    function errorCallback(response){
+      console.log(response);
+    });
+  };
 
-      $scope.getByParent = function(parentId) {
-        console.log('parent id='+parentId);
-        FoodService.doSomethingAsync()
-        .then(FoodService.getByParent(parentId))
-        .then(function(response) {
-          $scope.childMenu = [].concat(response);
-          console.log('length menus='+$scope.childMenu.length);
-        });
-      };
 
-    }
-];
+}];

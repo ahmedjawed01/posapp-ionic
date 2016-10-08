@@ -1,0 +1,47 @@
+
+<ion-view>
+  
+    <ion-nav-bar class="bar-orange">
+      <ion-nav-buttons side="left">
+        <button class="button button-icon icon ion-navicon" menu-toggle="left"></button>
+      </ion-nav-buttons>
+      <ion-nav-title>
+          <!-- <img src="../images/logo-font.png" class="font-icon" style="margin-top:10px"/> -->
+          <h4 style="color:#FFFFFF">My Order</h4>
+      </ion-nav-title>
+    </ion-nav-bar>
+
+    <ion-content>
+    <div class="row" style="background-color:#EEEEEE;color:#757575;padding-right:50px">
+      <div class="col col-75">
+      </div>
+      <div class="col col-10">
+        <strong>Qty</strong>
+      </div>
+      <div class="col">
+        <strong>Price</strong>
+      </div>
+    </div>
+    <ion-list can-swipe="true">
+      <ion-item ng-repeat="order in orders" style="color:#FFA726" class="item-remove-animate">
+          <div class="row" style="padding:0 0 0 0">
+            <div class="col col-75" style="padding:0 0 0 0;text-overflow: ellipsis;overflow:hidden">
+              <img src="./images/{{order.imageName}}" style="width:40%;vertical-align:middle">
+              <strong style="margin-left:20px">{{order.menuName}}</strong>
+            </div>
+            <div class="col col-10">
+              <strong style="height:100px;display:table-cell;vertical-align:middle">1</strong>
+            </div>
+            <div class="col">
+              <strong style="height:100px;display:table-cell;vertical-align:middle">{{order.price | currency:''}}</strong>
+            </div>
+          </div>
+          
+          <ion-option-button class="button-assertive" ng-click="orders.splice($index,1)" style="padding:20px">Delete</ion-option-button>
+      </ion-item>
+    </ion-list>
+
+
+
+  </ion-content>
+</ion-view>

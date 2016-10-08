@@ -7,53 +7,36 @@
  * # FoodService
  */
 module.exports = [
+    'BASE_URL',
     '$http',
     '$timeout',
     '$q',
-    function( $http, $timeout, $q )
+    function( $BASE_URL,$http, $timeout, $q )
     {
+     
       var kindOfPrivateVariable = 42;
 
       var doSomethingAsync = function() {
         var deferred = $q.defer();
-        $timeout(deferred.resolve.bind(null, kindOfPrivateVariable), 2000);
+        $timeout(deferred.resolve.bind(null, kindOfPrivateVariable), 1000);
         return deferred.promise;
       };
 
       var getParentMenu = function() {
-        return $http({
-            url: 'http://localhost:8888/menu/getParentMenu',
-            method: 'GET'
-          })
-          .success(function(data) {
-            console.log('response:', data);
-          })
-          .error(function(error) {
-            console.log('an error occured', error);
-          });
+        return $http.get($BASE_URL+"/menu/getParentMenu").success(function(response){
+          return response;
+        });
       };
 
-      var getByParent = function(id) {
-        return $http({
-            url: 'http://localhost:8888/menu/getByParent',
-            method: 'GET',
-            params: {
-              parentId: id
-            }
-          })
-          .success(function(data) {
-            console.log('response service:', data);
-          })
-          .error(function(error) {
-            console.log('an error occured', error);
-          });
+      var getChildMenu = function(id) {
+        return $http.get($BASE_URL+"/menu/getChildMenu?parentId="+id);
       };
 
       // public api
       return {
         doSomethingAsync: doSomethingAsync,
         getParentMenu: getParentMenu,
-        getByParent: getByParent
+        getChildMenu: getChildMenu
       };
     }
 ];

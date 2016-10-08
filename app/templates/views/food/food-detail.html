@@ -1,0 +1,60 @@
+
+<ion-view ng-init="getChildMenu()">
+  
+    <ion-nav-bar class="bar-orange">
+      <ion-nav-back-button class="button-clear" style="color:#FFFFFF">
+        <i class="ion-chevron-left"></i> Back
+      </ion-nav-back-button>
+      <ion-nav-title>
+          <!-- <img src="../images/logo-font.png" class="font-icon" style="margin-top:10px"/> -->
+          <h4 style="color:#FFFFFF">{{menu.menuName}}</h1>
+      </ion-nav-title>
+      <ion-nav-buttons side="right">
+        <button class="button-clear" style="color:#fff" ng-click="goMenu()">
+          Main Menu
+        </button>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+
+    <ion-content>
+    
+    <!-- <ul class="list">
+      <li class="item">
+        <div style="background:url('http://placehold.it/750x350') no-repeat;background-size:cover;position:relative;height:350px">
+          <strong><span style="position:absolute;bottom:0;color:#fff;padding:25px">Rp. {{menu.price | currency:''}}</span></strong>
+        </div>
+      </li>
+      <li class="item">
+        <strong>Description</strong>
+        <div class="col" style="white-space:normal">
+          {{menu.description}}
+        </div>
+      </li>
+      <li class="item" style="text-align:center">
+        <button class="button button-full button-primary">
+          Add To My Order
+        </button>
+      </li>
+    </ul> -->
+
+    <ion-list>
+      <ion-item back-img="images/{{menu.imageName}}" ng-style="{'height': '350px'}" >
+        <div id="menuCover">
+          <span style="position:absolute;bottom:0;padding:20px;color:#fff"><strong>{{menu.price | currency:'Rp.'}}</strong></span>
+        </div>
+      </ion-item>
+      <ion-item>
+        <strong>Description</strong>
+        <div class="col" style="white-space:normal">
+          {{menu.description}}
+        </div>
+      </ion-item>
+      <ion-item>
+        <button ng-click="add()" class="button button-full button-primary">
+          Add To My Order
+        </button>
+      </ion-item>
+    </ion-list>
+
+  </ion-content>
+</ion-view>
