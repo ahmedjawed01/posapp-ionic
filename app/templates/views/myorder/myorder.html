@@ -13,9 +13,12 @@
 
     <ion-content>
     <div class="row" style="background-color:#EEEEEE;color:#757575;padding-right:50px">
-      <div class="col col-75">
+      <div class="col col-25" style="padding-left:10px">
+        <strong>Table #{{vm.myorder.tableNo}}</strong>
       </div>
-      <div class="col col-10">
+      <div class="col col-50">
+      </div>
+      <div class="col">
         <strong>Qty</strong>
       </div>
       <div class="col">
@@ -23,25 +26,37 @@
       </div>
     </div>
     <ion-list can-swipe="true">
-      <ion-item ng-repeat="order in orders" style="color:#FFA726" class="item-remove-animate">
+      <ion-item ng-repeat="order in vm.myorder.orders" style="color:#FFA726" class="item-remove-animate">
           <div class="row" style="padding:0 0 0 0">
             <div class="col col-75" style="padding:0 0 0 0;text-overflow: ellipsis;overflow:hidden">
-              <img src="./images/{{order.imageName}}" style="width:40%;vertical-align:middle">
-              <strong style="margin-left:20px">{{order.menuName}}</strong>
+              <img src="{{order.menu.imageUrl}}" style="width:40%;vertical-align:middle">
+              <strong style="margin-left:20px">{{order.menu.menuName}}</strong>
             </div>
             <div class="col col-10">
-              <strong style="height:100px;display:table-cell;vertical-align:middle">1</strong>
+              <strong style="height:100px;display:table-cell;vertical-align:middle">
+                <input type="number" ng-model="order.qty">
+              </strong>
             </div>
             <div class="col">
-              <strong style="height:100px;display:table-cell;vertical-align:middle">{{order.price | currency:''}}</strong>
+              <strong style="height:100px;display:table-cell;vertical-align:middle">{{order.menu.price | currency:''}}</strong>
             </div>
           </div>
           
-          <ion-option-button class="button-assertive" ng-click="orders.splice($index,1)" style="padding:20px">Delete</ion-option-button>
+          <ion-option-button class="button-assertive" ng-click="vm.deleteOrder($index)" style="padding:20px">Delete</ion-option-button>
+      </ion-item>
+      <ion-item class="item-divider">
+        Total
+      </ion-item>
+      <ion-item>
+        <strong>{{vm.myorder.totalGross | currency:'Rp. '}}</strong>
       </ion-item>
     </ion-list>
 
-
+    <button ng-click="vm.submit()" class="button button-full button-primary">
+      {{vm.submitLabel}}
+    </button>
 
   </ion-content>
 </ion-view>
+
+

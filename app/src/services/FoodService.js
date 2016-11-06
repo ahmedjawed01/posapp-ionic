@@ -22,8 +22,8 @@ module.exports = [
         return deferred.promise;
       };
 
-      var getParentMenu = function() {
-        return $http.get($BASE_URL+"/menu/getParentMenu").success(function(response){
+      var getParentMenu = function(categoryId) {
+        return $http.get($BASE_URL+"/menu/getParentMenu?categoryId="+categoryId).success(function(response){
           return response;
         });
       };

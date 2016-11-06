@@ -21,24 +21,7 @@ angular.module( 'IonicGulp', [
   'ngCookies',
   'ngStorage'
 ] )
-.run( [
-  '$ionicPlatform','$rootScope', '$ionicLoading',
 
-  function( $ionicPlatform ,$rootScope, $ionicLoading)
-  {
-
-
-
-  $ionicPlatform.ready(function() {
-    // save to use plugins here
-    // regular stuff here
-    StatusBar.backgroundColorByHexString("#FFA726");
-
-  });
-
-  // add possible global event handlers here
-
-} ] )
 
 .directive('backImg', function(){
   return function(scope, element, attrs){
@@ -53,7 +36,7 @@ angular.module( 'IonicGulp', [
   };
 })
 
-.constant('BASE_URL','http://192.168.23.1:8080')
+.constant('BASE_URL','http://192.168.88.34:8080')
 // .constant('BASE_URL','http://localhost:8080')
 
 .config( [
@@ -64,10 +47,8 @@ angular.module( 'IonicGulp', [
 
   function( $httpProvider, $stateProvider, $urlRouterProvider,$ionicConfigProvider)
   {
-    $ionicConfigProvider.navBar.alignTitle('center')
-    // $ionicConfigProvider.backButton.text('');
-    // register $http interceptors, if any. e.g.
-    // $httpProvider.interceptors.push('interceptor-name');
+    $ionicConfigProvider.navBar.alignTitle('center');
+
 
     // Application routing
     $stateProvider
@@ -109,13 +90,6 @@ angular.module( 'IonicGulp', [
             templateUrl: 'templates/views/food/food.html',
             controller: 'FoodController'
           }
-        },
-        test: function($q,  $timeout) {
-          var defer = $q.defer(); 
-          $timeout(function(){
-            defer.reject();
-          },50);
-          return defer.promise; 
         }
       })
 
@@ -140,7 +114,7 @@ angular.module( 'IonicGulp', [
         views: {
           'viewContent': {
             templateUrl: 'templates/views/food/food-detail.html',
-            controller: 'FoodDetailController'
+            controller: 'FoodDetailController as vm'
           }
         },
         params: {
@@ -167,14 +141,14 @@ angular.module( 'IonicGulp', [
         }
       })
 
-      //---- DRINK ----
+      //---- MYORDER ----
       .state('app.myorder',{
         url: '/myorder',
         cache: true,
         views: {
           'viewContent': {
             templateUrl: 'templates/views/myorder/myorder.html',
-            controller: 'MyOrderController'
+            controller: 'MyOrderController as vm'
           }
         }
       });
@@ -184,6 +158,60 @@ angular.module( 'IonicGulp', [
     $urlRouterProvider.otherwise('/app/home');
   }
 ] )
+
+.run([
+  '$ionicPlatform','$rootScope',
+
+  function( $ionicPlatform ,$rootScope)
+  {
+
+    $ionicPlatform.ready(function() {
+      // save to use plugins here
+      // regular stuff here
+      StatusBar.backgroundColorByHexString("#FFA726");
+
+      
+
+      // var push = PushNotification.init({
+      //   android: {
+      //     senderID: "154138397242",
+      //     alert: "true",
+      //     badge: true,
+      //     sound: "true"
+      //   },
+      //   browser: {
+      //     pushServiceURL: 'http://push.api.phonegap.com/v1/push'
+      //   },
+      //   ios: {
+      //     alert: "true",
+      //     badge: true,
+      //     sound: 'false'
+      //   },
+      //   windows: {}
+      // });
+
+      // push.on('registration', function(data) {
+      //   console.log('registration id = '+data.registrationId);
+      // });
+
+      // push.on('notification', function(data) {
+      //   console.log(data);
+      //   alert(data.message);
+      //   console.log(data.title);
+      //   console.log(data.count);
+      //   console.log(data.sound);
+      //   console.log(data.image);
+      //   console.log(data.additionalData);
+      // });
+
+      // push.on('error', function(e) {
+      //   console.log('error='+e.message);
+      // });
+
+
+    });
+
+  } ] )
 
 // Angular module controllers
 //
@@ -202,4 +230,5 @@ angular.module( 'IonicGulp', [
 .factory( 'ApiService',            require( './services/ApiService'     ) )
 .factory( 'FoodService',  require('./services/FoodService'))
 .factory( 'StorageService',  require('./services/StorageService'))
+.factory( 'SalesOrderService', require('./services/SalesOrderService'))
 ;

@@ -21,14 +21,14 @@
  {
 
   if(angular.isUndefined($sessionStorage.myorder)){                       
-    $sessionStorage = $sessionStorage.$default({myorder: []}); 
+    $sessionStorage = $sessionStorage.$default({myorder: {totalGross: 0,tableNo: null,orders:[]}});
   }
 
   var get = function(key){
     return $sessionStorage[key];
   };
 
-  var saveOrder = function(key,value){
+  var saveOrder = function(value){
     return $sessionStorage.myorder = value;
   };
 

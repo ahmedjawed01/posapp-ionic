@@ -18,7 +18,7 @@ module.exports = [
         	if(StorageService.get('myorder') == null){
         		return 0;
         	}
-        	return StorageService.get('myorder').length;
+        	return StorageService.get('myorder').orders.length;
         }
     }
 ];

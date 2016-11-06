@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "author": "curiouslabs <hadihadihadi91@gmail.com>",
   "description": "",
-  "dependencies": {},
+  "dependencies": {
+    "@ionic/cloud": "^0.14.0"
+  },
   "devDependencies": {
     "beepbeep": "^1.2.0",
     "connect-livereload": "^0.5.2",
@@ -52,5 +54,14 @@
   },
   "scripts": {
     "gulp": "./node_modules/.bin/gulp"
-  }
+  },
+
+  "cordovaPlugins": [
+    {
+      "variables": {
+        "SENDER_ID": "154138397242"
+      },
+      "locator": "phonegap-plugin-push"
+    }
+  ]
 }

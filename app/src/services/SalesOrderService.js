@@ -27,7 +27,7 @@ module.exports = [
       }
 
       var requestBill = function(table){
-        return $http.post($BASE_URL+'salesOrder/requestBill',table)
+        return $http.post($BASE_URL+'/salesOrder/requestBill',table);
       }
 
       // public api

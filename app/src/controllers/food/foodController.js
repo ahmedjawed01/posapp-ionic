@@ -2,28 +2,29 @@
 
 /**
  * @ngdoc function
- * @name IonicGulp.controller:HomeController
  * @description
  * # HomeController
  */
  module.exports = [
- '$scope','$state','FoodService','$stateParams',
+ '$scope','$state','FoodService','$stateParams','$ionicLoading',
 
- function($scope,$state,FoodService,$stateParams,getData){
+ function($scope,$state,FoodService,$stateParams,$ionicLoading){
 
   $scope.parentId = 0;
-
 
   $scope.childMenu = [];
 
   $scope.parentMenu = [];
 
   $scope.getParentMenu = function() {
-    FoodService.doSomethingAsync().then(FoodService.getParentMenu).then(function successCallback(response) {
+    $ionicLoading.show();
+    FoodService.getParentMenu(1).then(function successCallback(response) {
+      $ionicLoading.hide();
       console.log(response);
       $scope.parentMenu = response.data;
     }, 
     function errorCallback(response){
+      $ionicLoading.hide();
       console.log(response);
     });
   };

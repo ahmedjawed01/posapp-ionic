@@ -38,19 +38,19 @@
     </ul> -->
 
     <ion-list>
-      <ion-item back-img="images/{{menu.imageName}}" ng-style="{'height': '350px'}" >
+      <ion-item back-img="{{vm.menu.imageUrl}}" ng-style="{'height': '350px'}" >
         <div id="menuCover">
-          <span style="position:absolute;bottom:0;padding:20px;color:#fff"><strong>{{menu.price | currency:'Rp.'}}</strong></span>
+          <span style="position:absolute;bottom:0;padding:20px;color:#fff"><strong>{{vm.menu.price | currency:'Rp.'}}</strong></span>
         </div>
       </ion-item>
       <ion-item>
         <strong>Description</strong>
         <div class="col" style="white-space:normal">
-          {{menu.description}}
+          {{vm.menu.description}}
         </div>
       </ion-item>
       <ion-item>
-        <button ng-click="add()" class="button button-full button-primary">
+        <button ng-click="vm.add()" class="button button-full button-primary">
           Add To My Order
         </button>
       </ion-item>
