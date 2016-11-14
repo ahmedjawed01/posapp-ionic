@@ -60,7 +60,7 @@ angular.module( 'IonicGulp', [
       })
       .state('app.home', {
         url: '/home',
-        cache: true,
+        cache: false,
         views: {
           'viewContent': {
             templateUrl: 'templates/views/home.html',
@@ -80,64 +80,49 @@ angular.module( 'IonicGulp', [
         }
       })
 
-      //---- FOOD ----
-      .state('app.food',{
-        url: '/foods',
+      //---- MENU ----
+      .state('app.menu',{
+        url: '/menus',
         cache: true,
         parent: 'app',
         views: {
           'viewContent': {
-            templateUrl: 'templates/views/food/food.html',
-            controller: 'FoodController'
+            templateUrl: 'templates/views/menu/menu.html',
+            controller: 'MenuController'
           }
+        },
+        params:{
+          categoryId: null
         }
       })
 
-      .state('app.foodlist',{
-        url: '/foods/',
+      .state('app.menulist',{
+        url: '/menus/',
         cache: true,
         views: {
           'viewContent': {
-            templateUrl: 'templates/views/food/food-list.html',
-            controller: 'FoodListController'
+            templateUrl: 'templates/views/menu/menu-list.html',
+            controller: 'MenuListController'
           }
         },
         params: {
-          parentId: null
+          parentId: null,
+          parentName: null
         }
       })
 
-      .state('app.fooddetail',{
-        url: '/foods/detail',
+      .state('app.menudetail',{
+        url: '/menus/detail',
         cache: true,
         parent: 'app',
         views: {
           'viewContent': {
-            templateUrl: 'templates/views/food/food-detail.html',
-            controller: 'FoodDetailController as vm'
+            templateUrl: 'templates/views/menu/menu-detail.html',
+            controller: 'MenuDetailController as vm'
           }
         },
         params: {
           menu: null
-        }
-      })
-
-      //---- DRINK ----
-      .state('app.drink',{
-        url: '/drinks',
-        cache: true,
-        views: {
-          'viewContent': {
-            templateUrl: 'templates/views/drink/drink.html',
-            controller: 'DrinkController as vm'
-          }
-        },
-        test: function($q,  $timeout) {
-          var defer = $q.defer(); 
-          $timeout(function(){
-            defer.reject();
-          },50);
-          return defer.promise; 
         }
       })
 
@@ -169,46 +154,6 @@ angular.module( 'IonicGulp', [
       // save to use plugins here
       // regular stuff here
       StatusBar.backgroundColorByHexString("#FFA726");
-
-      
-
-      // var push = PushNotification.init({
-      //   android: {
-      //     senderID: "154138397242",
-      //     alert: "true",
-      //     badge: true,
-      //     sound: "true"
-      //   },
-      //   browser: {
-      //     pushServiceURL: 'http://push.api.phonegap.com/v1/push'
-      //   },
-      //   ios: {
-      //     alert: "true",
-      //     badge: true,
-      //     sound: 'false'
-      //   },
-      //   windows: {}
-      // });
-
-      // push.on('registration', function(data) {
-      //   console.log('registration id = '+data.registrationId);
-      // });
-
-      // push.on('notification', function(data) {
-      //   console.log(data);
-      //   alert(data.message);
-      //   console.log(data.title);
-      //   console.log(data.count);
-      //   console.log(data.sound);
-      //   console.log(data.image);
-      //   console.log(data.additionalData);
-      // });
-
-      // push.on('error', function(e) {
-      //   console.log('error='+e.message);
-      // });
-
-
     });
 
   } ] )
@@ -218,17 +163,14 @@ angular.module( 'IonicGulp', [
 .controller( 'MainController',     require( './controllers/mainController'     ) )
 .controller( 'HomeController',     require( './controllers/homeController'     ) )
 .controller( 'SettingsController', require( './controllers/settingsController' ) )
-.controller( 'FoodController',      require( './controllers/food/foodController'      ) )
-.controller( 'FoodListController',      require( './controllers/food/foodListController'      ) )
-.controller( 'FoodDetailController', require( './controllers/food/foodDetailController' ))
-.controller( 'DrinkController',      require( './controllers/drink/drinkController'    ) )
+.controller( 'MenuController',      require( './controllers/menu/menuController'      ) )
+.controller( 'MenuListController',      require( './controllers/menu/menuListController'      ) )
+.controller( 'MenuDetailController', require( './controllers/menu/menuDetailController' ))
 .controller( 'MyOrderController',      require( './controllers/myorder/myOrderController'    ) )
 
 // Angular module services
-//
-.factory( 'ExampleService',        require( './services/ExampleService' ) )
-.factory( 'ApiService',            require( './services/ApiService'     ) )
-.factory( 'FoodService',  require('./services/FoodService'))
+
+.factory( 'MenuService',  require('./services/menuService'))
 .factory( 'StorageService',  require('./services/StorageService'))
 .factory( 'SalesOrderService', require('./services/SalesOrderService'))
 ;

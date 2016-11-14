@@ -7,18 +7,21 @@
  * # HomeController
  */
  module.exports = [
- '$scope','$state','$ionicHistory','FoodService','$stateParams',
+ '$scope','$state','$ionicHistory','MenuService','$stateParams',
 
- function($scope,$state,$ionicHistory,FoodService,$stateParams){
+ function($scope,$state,$ionicHistory,MenuService,$stateParams){
 
    $scope.menus = [];
+
+   $scope.category = $stateParams.parentName;
 
    console.log('params='+$stateParams.parentId);
 
    $scope.getChildMenu = function(){
-    FoodService.getChildMenu($stateParams.parentId).then(function successCallback(response){
+    MenuService.getChildMenu($stateParams.parentId).then(function successCallback(response){
       console.log(response);
       $scope.menus = response.data;
+
     },
     function errorCallback(response){
       console.log(response);
@@ -26,7 +29,7 @@
   }
 
   $scope.goDetail = function(menu){
-    $state.go('app.fooddetail',{'menu':menu});
+    $state.go('app.menudetail',{'menu':menu});
   }
 
   $scope.goBack = function() {

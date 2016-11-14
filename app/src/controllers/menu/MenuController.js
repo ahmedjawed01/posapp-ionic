@@ -6,9 +6,9 @@
  * # HomeController
  */
  module.exports = [
- '$scope','$state','FoodService','$stateParams','$ionicLoading',
+ '$scope','$state','MenuService','$stateParams','$ionicLoading',
 
- function($scope,$state,FoodService,$stateParams,$ionicLoading){
+ function($scope,$state,MenuService,$stateParams,$ionicLoading){
 
   $scope.parentId = 0;
 
@@ -18,7 +18,7 @@
 
   $scope.getParentMenu = function() {
     $ionicLoading.show();
-    FoodService.getParentMenu(1).then(function successCallback(response) {
+    MenuService.getParentMenu($stateParams.categoryId).then(function successCallback(response) {
       $ionicLoading.hide();
       console.log(response);
       $scope.parentMenu = response.data;

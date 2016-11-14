@@ -7,9 +7,9 @@
  * # HomeController
  */
  module.exports = [
- '$scope','$state','$ionicHistory','FoodService','$stateParams','$timeout','StorageService',
+ '$scope','$state','$ionicHistory','MenuService','$stateParams','$timeout','StorageService',
 
- function($scope,$state,$ionicHistory,FoodService,$stateParams,$timeout,StorageService){
+ function($scope,$state,$ionicHistory,MenuService,$stateParams,$timeout,StorageService){
 
   var vm = this;
 
@@ -46,6 +46,6 @@
   };
 
   $scope.goMenu = function(){
-   $ionicHistory.goBack(-3);
+   $ionicHistory.goBack(-4);
  };
 }];

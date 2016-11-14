@@ -12,15 +12,12 @@
     </ion-nav-title>
   </ion-nav-bar>
   <ion-content>
-    <div ng-show='stateIsLoading'>
-      <strong>Loading.</strong>
-    </div>
     <div class="row responsive-lg" style="margin-bottom:0px">
       <div class="card" style="margin:5px 0px" ng-repeat="menu in parentMenu">
         <div class="item item-image">
           <div class="item-cover" ng-style="{'background-image':'url({{menu.imageUrl}})'}">
             <div class="item-overlay">
-              <button class="button button-clear button-positive" ui-sref="app.foodlist({parentId: menu.id})">
+              <button class="button button-clear button-positive" ui-sref="app.menulist({parentId: menu.id,parentName: menu.menuName})">
                 {{menu.menuName}}
               </button>
             </div>
