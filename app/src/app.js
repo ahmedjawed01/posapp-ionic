@@ -36,8 +36,8 @@ angular.module( 'IonicGulp', [
   };
 })
 
-.constant('BASE_URL','http://192.168.88.34:8080')
-// .constant('BASE_URL','http://localhost:8080')
+// .constant('BASE_URL','http://192.168.88.34:8080')
+.constant('BASE_URL','http://localhost:8080')
 
 .config( [
   '$httpProvider',

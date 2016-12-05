@@ -7,7 +7,7 @@
       </ion-nav-back-button>
       <ion-nav-title>
           <!-- <img src="../images/logo-font.png" class="font-icon" style="margin-top:10px"/> -->
-          <h4 style="color:#FFFFFF">{{menu.menuName}}</h1>
+          <h4 style="color:#FFFFFF">{{vm.menu.menuName}}</h4>
       </ion-nav-title>
       <ion-nav-buttons side="right">
         <button class="button-clear" style="color:#fff" ng-click="goMenu()">
@@ -17,25 +17,6 @@
     </ion-nav-bar>
 
     <ion-content>
-    
-    <!-- <ul class="list">
-      <li class="item">
-        <div style="background:url('http://placehold.it/750x350') no-repeat;background-size:cover;position:relative;height:350px">
-          <strong><span style="position:absolute;bottom:0;color:#fff;padding:25px">Rp. {{menu.price | currency:''}}</span></strong>
-        </div>
-      </li>
-      <li class="item">
-        <strong>Description</strong>
-        <div class="col" style="white-space:normal">
-          {{menu.description}}
-        </div>
-      </li>
-      <li class="item" style="text-align:center">
-        <button class="button button-full button-primary">
-          Add To My Order
-        </button>
-      </li>
-    </ul> -->
 
     <ion-list>
       <ion-item back-img="{{vm.menu.imageUrl}}" ng-style="{'height': '350px'}" >

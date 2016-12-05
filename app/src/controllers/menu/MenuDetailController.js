@@ -7,9 +7,9 @@
  * # HomeController
  */
  module.exports = [
- '$scope','$state','$ionicHistory','MenuService','$stateParams','$timeout','StorageService',
+ '$scope','$state','$ionicHistory','MenuService','$stateParams','$timeout','$ionicPopup','StorageService',
 
- function($scope,$state,$ionicHistory,MenuService,$stateParams,$timeout,StorageService){
+ function($scope,$state,$ionicHistory,MenuService,$stateParams,$timeout,$ionicPopup,StorageService){
 
   var vm = this;
 
@@ -39,6 +39,9 @@
     vm.orderData.subtotal = vm.menu.price;
     vm.jsonData.orders.push(vm.orderData);
     StorageService.saveOrder(vm.jsonData);
+    $ionicPopup.alert({
+      title: 'Menu successfully add to my order !'
+    });
   };
 
   $scope.goBack = function() {
