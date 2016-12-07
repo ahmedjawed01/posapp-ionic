@@ -48,29 +48,48 @@
   };
 
   vm.requestBill = function(){
-    var data = {table: vm.salesOrder.tableNo};
-    SalesOrderService.requestBill(data).then(function successCalback(response){
-      console.log(response);
-      $ionicPopup.confirm({title: 'Please Wait',template: 'Your Request has been Processed'});
-    },function errorCallback(response){
-      console.log(response);
-    });
-  }
-
-  vm.showConfirm = function() {
-   var confirmPopup = $ionicPopup.confirm({
-     title: 'Once order is submit, order cannot be cancelled',
-     template: composeConfirmation(),
-     buttons: [{ text: 'Cancel' },{type: 'button-primary',text:'Submit'}]
-   });
-
-   confirmPopup.then(function(res) {
-     if(!res) {
-       vm.submitOrder();
+    $ionicPopup.confirm({
+      title: 'Request for Bill',
+      template: '<p>Do you want to process bill request now ?</p>',
+      cancelText: 'No',
+      cancelType: 'button-default',
+      okText: 'Yes',
+      okType: 'button-positive'
+    })
+    .then(function(res) {
+      console.log('confirm='+res);
+      if(res == true) {
+       var data = {table: vm.salesOrder.tableNo};
+       SalesOrderService.requestBill(data).then(function successCalback(response){
+        console.log(response);
+        $ionicPopup.confirm({title: 'Please Wait',template: 'Your Request has been Processed'});
+      },function errorCallback(response){
+        console.log(response);
+      });
      } else {
        console.log('You are not sure');
      }
    });
+    
+  }
+
+  vm.showConfirm = function() {
+   $ionicPopup.confirm({
+     title: 'Once order is submit, order cannot be cancelled',
+     template: composeConfirmation(),
+     cancelText: 'Cancel',
+     cancelType: 'button-default',
+     okText: 'Submit',
+     okType: 'button-positive'
+   })
+   .then(function(res) {
+    console.log('confirm='+res);
+    if(res == true) {
+     vm.submitOrder();
+   } else {
+     console.log('You are not sure');
+   }
+ });
  };
 
  function composeConfirmation(){
