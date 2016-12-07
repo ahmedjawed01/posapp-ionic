@@ -24,7 +24,14 @@
 
   vm.submit = function(){
     if(vm.submitLabel == 'Submit Order'){
-      vm.showConfirm();
+      if(vm.myorder.orders.length == 0){
+        $ionicPopup.alert({
+          title: 'Hi there !',
+          template: '<p style="color:red"><strong>Your order still empty, add some menu to make an order.</strong></p>'
+        });
+      }else{
+        vm.showConfirm();
+      }
     }else{
       vm.requestBill();
     }
